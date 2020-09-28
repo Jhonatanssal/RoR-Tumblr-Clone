@@ -1,5 +1,16 @@
 <div class="">
   <%= form_for :post, url: posts_path do |f| %>
+    <% if @post.errors.any? %>
+      <div>
+        <h3>You can't save this post because of <%= pluralize(@post.errors.count, 'error') %>:</h3>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
     <p>
       <%= f.label :title, 'Title:', class: 'font-weight-bold text-info' %><br>
       <%= f.text_field :title, class: 'w-100 form-control' %>

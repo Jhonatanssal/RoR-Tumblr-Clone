@@ -11,7 +11,7 @@
   <div class="post_wrapper card text-center shadow mb-2">
     <p class="card-header text-secondary">Post <%= post.id %></p>
     <h2 class="title card-title mt-2"><%= link_to post.title, post %> </h2>
-    <p class="card-text"><%= post.body[0..50] %>...</p>
+    <p class="card-text text-muted"><%= truncate(post.body, length: 60) %></p>
     <div class="card-footer text-muted">
         <%= time_ago_in_words(post.created_at) %> ago.
     </div>
