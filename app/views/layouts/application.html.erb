@@ -5,11 +5,55 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'style' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="">
+    <nav class="navbar bg-primary align-items-center d-flex shadow-sm">
+      <div class="d-flex">
+        <button class="text-white btn btn-light mr-2"><%= link_to 'Tumblr', root_path, class: 'text-dark' %> </button>
+        <button class="text-white btn btn-light mr-2"><%= link_to 'Posts', root_path, class: 'text-dark' %></button>
+        <button class="text-dark btn btn-light mr-2">About</button>
+      </div>
+      <%# <% if user_signed_in? %>
+        <%# <button class="btn btn-warning">
+          Log Out
+        </button> %>
+      <%# <% else %>
+        <button class="btn btn-success">
+          User LogIn
+        </button>
+      <%# <% end %>
+    </nav>
+
+    <div class="container-fluid d-flex justify-content-between my-3">
+
+      <div class="user col-2 card shadow-sm d-flex flex-column">
+
+        <%= render 'prof' %>
+
+      </div>
+
+      <div class="main_content mt-4 col-8">
+
+        <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: "alert") %>
+        <% end %>
+
+        <%= yield %>
+
+      </div>
+
+      <div class="user col-2 card shadow-sm">
+        
+        <%= render 'cont' %>
+
+      </div>
+
+    </div>
+
   </body>
 </html>

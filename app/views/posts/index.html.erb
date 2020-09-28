@@ -1,6 +1,19 @@
+
+<div id="header">
+  <h2 class="font-weight-bold text-secondary text-center">Posts Feed</h2>
+</div>
+<div class="button">
+  <%# <% if user_signed_in? %>
+    <button class="btn btn-info btn-block"><%= link_to 'Make Post', new_post_path, class: 'text-white' %></button>
+  <%# <% end %>
+</div><br>
 <% @posts.each do |post| %>
-  <div class="post_wrapper">
-    <h2 class="title"><%= link_to post.title, post %> </h2>
-    <p class="date"><%= time_ago_in_words(post.created_at) %> ago.</p>
+  <div class="post_wrapper card text-center shadow mb-2">
+    <p class="card-header text-secondary">Post <%= post.id %></p>
+    <h2 class="title card-title mt-2"><%= link_to post.title, post %> </h2>
+    <p class="card-text"><%= post.body[0..50] %>...</p>
+    <div class="card-footer text-muted">
+        <%= time_ago_in_words(post.created_at) %> ago.
+    </div>
   </div>
 <% end %>
