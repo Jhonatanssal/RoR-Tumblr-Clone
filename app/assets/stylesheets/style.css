@@ -6,3 +6,7 @@
 .sidebar {
   background-color: rgb(123, 176, 255);
 }
+
+#profile-pic {
+  width: 6rem;
+}
