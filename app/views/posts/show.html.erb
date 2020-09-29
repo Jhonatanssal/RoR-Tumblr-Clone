@@ -24,3 +24,12 @@
     <small>Submitted <%= time_ago_in_words(@post.created_at) %> ago.</small>
   </div>
 </div>
+
+<div class="card comments mt-3">
+    <div class="comment m-3">
+      <h3 class="text-secondary"><%= pluralize(@post.comments.count, 'Comment') %></h3>
+      <%= render @post.comments %><br>
+      <h4 class="text-info">Join discussion: </h4>
+      <%= render 'comments/form'%>
+    </div>
+</div>
